@@ -1,5 +1,6 @@
 package lab.pubsub.consumer;
 
+import org.apache.commons.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -15,5 +16,9 @@ public class SampleConsumer {
 		LOG.info(transaction);
 		
 		// process transaction here
+	}
+	@KafkaListener(topics = "greet")
+	void listenerGreet(String name){
+		LOG.info("Hello "+name.toUpperCase());
 	}
 }
